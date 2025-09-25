@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react";
 
 const ChatHistory = ({ sessions, currentId, onNewChat, onSelectChat }) => {
   return (
@@ -10,10 +10,12 @@ const ChatHistory = ({ sessions, currentId, onNewChat, onSelectChat }) => {
         {sessions.map((session) => (
           <div
             key={session.id}
-            className={`history-item ${session.id === currentId ? 'active' : ''}`}
+            className={`history-item ${session.id === currentId ? "active" : ""}`}
             onClick={() => onSelectChat(session.id)}
           >
-            {session.messages[0] ? session.messages[0].text.substring(0, 30) + '...' : 'New Chat'}
+            {session.messages[0]
+              ? session.messages[0].text.substring(0, 30) + "..."
+              : "New Chat"}
           </div>
         ))}
       </div>

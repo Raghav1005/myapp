@@ -38,7 +38,7 @@ function App() {
     const updatedSessions = chatSessions.map((chat) =>
       chat.id === currentChatId
         ? { ...chat, messages: [...chat.messages, userMessage] }
-        : chat
+        : chat,
     );
     setChatSessions(updatedSessions);
     setInput("");
@@ -65,7 +65,7 @@ function App() {
             "Content-Type": "application/json",
           },
           body: JSON.stringify(requestBody),
-        }
+        },
       );
 
       if (!response.ok) {
@@ -73,7 +73,7 @@ function App() {
         throw new Error(
           `API error: ${response.status} - ${
             errorData.message || response.statusText
-          }`
+          }`,
         );
       }
 
@@ -88,8 +88,8 @@ function App() {
         prev.map((chat) =>
           chat.id === currentChatId
             ? { ...chat, messages: [...chat.messages, aiMessage] }
-            : chat
-        )
+            : chat,
+        ),
       );
     } catch (error) {
       console.error("Error calling OpenRouter API:", error);
@@ -101,8 +101,8 @@ function App() {
         prev.map((chat) =>
           chat.id === currentChatId
             ? { ...chat, messages: [...chat.messages, errorMessage] }
-            : chat
-        )
+            : chat,
+        ),
       );
     }
   };
