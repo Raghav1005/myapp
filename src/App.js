@@ -6,7 +6,6 @@ import remarkGfm from "remark-gfm";
 
 const OPENROUTER_API_KEY = process.env.REACT_APP_OPENROUTER_API_KEY;
 
-
 function App() {
   if (!OPENROUTER_API_KEY) {
     return (
@@ -19,6 +18,7 @@ function App() {
       </div>
     );
   }
+
   const [chatSessions, setChatSessions] = useState([
     {
       id: "1",
@@ -35,7 +35,6 @@ function App() {
 
     const userMessage = { text: input, sender: "user" };
 
-    // Find current session
     const updatedSessions = chatSessions.map((chat) =>
       chat.id === currentChatId
         ? { ...chat, messages: [...chat.messages, userMessage] }
