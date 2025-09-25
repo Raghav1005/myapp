@@ -6,7 +6,19 @@ import remarkGfm from "remark-gfm";
 
 const OPENROUTER_API_KEY = process.env.REACT_APP_OPENROUTER_API_KEY;
 
+
 function App() {
+  if (!OPENROUTER_API_KEY) {
+    return (
+      <div className="error-message">
+        <h2>API Key Missing</h2>
+        <p>
+          Please set your OpenRouter API key in the
+          <code>.env</code> file as <code>REACT_APP_OPENROUTER_API_KEY</code>.
+        </p>
+      </div>
+    );
+  }
   const [chatSessions, setChatSessions] = useState([
     {
       id: "1",
